@@ -9,7 +9,7 @@ from gnucash_to_beancount.directives import Price
 from gnucash_to_beancount.directives import TransactionWithPostings
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
-__license__ = "GPL v2"
+__license__ = "GNU GPLv2"
 
 
 def load_entries(book):

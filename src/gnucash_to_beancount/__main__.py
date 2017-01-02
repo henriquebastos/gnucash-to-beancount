@@ -9,7 +9,7 @@ from beancount.parser import printer
 from gnucash_to_beancount import convert
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
-__license__ = "GPL v2"
+__license__ = "GNU GPLv2"
 
 
 def file_exists(filename):

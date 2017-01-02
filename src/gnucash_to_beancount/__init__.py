@@ -3,7 +3,7 @@
 import sys
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
-__license__ = "GPL v2"
+__license__ = "GNU GPLv2"
 
 
 if sys.version_info < (3, 3):

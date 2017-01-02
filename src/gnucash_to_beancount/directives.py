@@ -4,7 +4,7 @@ from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
-__license__ = "GPL v2"
+__license__ = "GNU GPLv2"
 
 
 def meta_from(obj, fields):
