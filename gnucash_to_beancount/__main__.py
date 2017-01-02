@@ -1,3 +1,6 @@
+"""Gnucash to Beancount converter.
+"""
+
 import argparse
 from pathlib import Path
 
@@ -5,9 +8,12 @@ import piecash
 from beancount.parser import printer
 from gnucash_to_beancount import convert
 
+__author__ = "Henrique Bastos <henrique@bastos.net>"
+__license__ = "GPL v2"
 
 
 def file_exists(filename):
+    """Make sure input filename exists."""
     if not Path(filename).exists():
         raise argparse.ArgumentTypeError('File not found: ' + filename)
 
@@ -15,6 +21,7 @@ def file_exists(filename):
 
 
 def cli():
+    """Process the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument('input', type=file_exists)
 
