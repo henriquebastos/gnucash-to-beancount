@@ -22,8 +22,11 @@ def file_exists(filename):
 
 def args():
     """Process the command line."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('input', type=file_exists)
+    parser = argparse.ArgumentParser(
+        description='Gnucash to Beancount Converter.',
+        epilog='The Beancount ledger will be writen to STDOUT.'
+    )
+    parser.add_argument('filename', type=file_exists, help='Gnucash Sqlite3 file.')
 
     return parser.parse_args()
 
@@ -32,6 +35,6 @@ def main():
     """Generate beancount output from gnucash file."""
     options = args()
 
-    with piecash.open_book(options.input, open_if_lock=True) as book:
+    with piecash.open_book(options.filename, open_if_lock=True) as book:
         entries = convert.load_entries(book)
         printer.print_entries(entries)
