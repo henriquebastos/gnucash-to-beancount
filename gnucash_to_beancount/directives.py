@@ -1,6 +1,10 @@
+"""Factories to transform Gnucash entities into Beancount directives.
+"""
 from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
 
+__author__ = "Henrique Bastos <henrique@bastos.net>"
+__license__ = "GPL v2"
 
 def meta_from(obj, attributes):
     d = {}
@@ -13,8 +17,19 @@ def meta_from(obj, attributes):
 
     return data.new_metadata('', '', d)
 
+# Accounts & Open
+
 
 def _get_account_types_map(acc_types):
+    """Helper that maps account types from Gnucash to Beancount.
+
+    Gnucash have 1 root account and 13 account types allowing very
+    permissive account trees.
+
+    However, Beancount restrict us to 5 root account types.
+
+    So we need to build a map that will help us fix the account tree.
+    """
     pairs = (
         ('ROOT', None),
         ('ASSET BANK CASH MUTUAL RECEIVABLE STOCK TRADING', acc_types.assets),
@@ -28,23 +43,52 @@ def _get_account_types_map(acc_types):
 
 
 ACCOUNT_TYPES_MAP = _get_account_types_map(ACCOUNT_TYPES)
-
-SEP = ':'
+ACCOUNT_SEP = ':'
 
 
 def account_name(account):
+    """Returns a valid Beancount account name for a Gnucash account."""
+
     name = account.fullname
     name = name.replace(' ', '-')  # Beancount does not allow whitespace.
 
+    # If the Gnucash account is not under a valid Beancount account root
+    # we must append it to the proper branch using the built account map.
     acc_type = ACCOUNT_TYPES_MAP[account.type]
-    head, _, tail = name.partition(SEP)
+    head, _, tail = name.partition(ACCOUNT_SEP)
 
     if head != acc_type:
         # Filter empty parts
-        parts = (part for part in (acc_type, head, tail) if part)
-        name = SEP.join(parts)
+        parts = (p for p in (acc_type, head, tail) if p)
+        name = ACCOUNT_SEP.join(parts)
 
     return name
+
+
+def Open(account, date):
+    meta = meta_from(account, 'code description')
+    name = account_name(account)
+    commodity = [account.commodity.mnemonic] if account.commodity else None
+
+    return data.Open(meta, date, name, commodity, None)
+
+
+def Commodity(commodity, date):
+    meta = meta_from(commodity, 'fullname')
+
+    return data.Commodity(meta, date, commodity.mnemonic)
+
+
+def Price(price):
+    meta = {}
+    date = price.date.date()
+    currency = price.commodity.mnemonic
+    amount = data.Amount(price.value, price.currency.mnemonic)
+
+    return data.Price(meta, date, currency, amount)
+
+
+# Postings
 
 
 def units_for(split):
@@ -71,27 +115,15 @@ def price_for(split):
     return data.Amount(number, currency)
 
 
-def Open(account, date):
-    meta = meta_from(account, 'code description')
-    name = account_name(account)
-    commodity = [account.commodity.mnemonic] if account.commodity else None
+def Posting(split):
+    meta = meta_from(split, 'memo')
+    account = account_name(split.account)
+    cost = None
+    flag = None
+    units = units_for(split)
+    price = price_for(split)
 
-    return data.Open(meta, date, name, commodity, None)
-
-
-def Commodity(commodity, date):
-    meta = meta_from(commodity, 'fullname')
-
-    return data.Commodity(meta, date, commodity.mnemonic)
-
-
-def Price(price):
-    meta = {}
-    date = price.date.date()
-    currency = price.commodity.mnemonic
-    amount = data.Amount(price.value, price.currency.mnemonic)
-
-    return data.Price(meta, date, currency, amount)
+    return data.Posting(account, units, cost, price, flag, meta)
 
 
 def Transaction(txn, postings=None):
@@ -104,17 +136,6 @@ def Transaction(txn, postings=None):
     postings = postings or []
 
     return data.Transaction(meta, date, flag, payee, narration, None, None, postings)
-
-
-def Posting(split):
-    meta = meta_from(split, 'memo')
-    account = account_name(split.account)
-    cost = None
-    flag = None
-    units = units_for(split)
-    price = price_for(split)
-
-    return data.Posting(account, units, cost, price, flag, meta)
 
 
 def TransactionWithPostings(txn):
