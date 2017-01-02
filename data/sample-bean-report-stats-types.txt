@@ -1,0 +1,8 @@
+Type         Num Entries
+-----------  -----------
+Open                  20
+Transaction           10
+Commodity              5
+Price                  2
+~Total~               37
+-----------  -----------
