@@ -1,15 +1,10 @@
 import argparse
-from operator import attrgetter
 from pathlib import Path
 
 import piecash
 from beancount.parser import printer
+from gnucash_to_beancount import convert
 
-from gnucash_to_beancount.convert import ACCOUNT_TYPES
-from gnucash_to_beancount.convert import Commodity
-from gnucash_to_beancount.convert import Open
-from gnucash_to_beancount.convert import Price
-from gnucash_to_beancount.convert import TransactionWithPostings
 
 
 def file_exists(filename):
@@ -27,29 +22,10 @@ def parse_arguments():
 
 
 def main(options):
-    with piecash.open_book(options.input, readonly=True) as book:
-        first_date = book.transactions[0].post_date.date()
-
-        entries = []
-
-        for account in book.accounts:
-            if account.fullname in ACCOUNT_TYPES:
-                continue
-
-            entries.append(Open(account, first_date))
-
-        entries.sort(key=attrgetter('account'))
-
-        for commodity in book.commodities:
-            entries.append(Commodity(commodity, first_date))
-
-        for price in book.prices:
-            entries.append(Price(price))
-
-        for txn in book.transactions:
-            entries.append(TransactionWithPostings(txn))
-
-    printer.print_entries(entries)
+    """Generate beancount output from gnucash file."""
+    with piecash.open_book(options.input, open_if_lock=True) as book:
+        entries = convert.load_entries(book)
+        printer.print_entries(entries)
 
 
 main(parse_arguments())
