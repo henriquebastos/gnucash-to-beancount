@@ -6,16 +6,14 @@ from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
 __author__ = "Henrique Bastos <henrique@bastos.net>"
 __license__ = "GPL v2"
 
-def meta_from(obj, attributes):
-    d = {}
-    for k in attributes.split(' '):
-        v = getattr(obj, k, None)
-        if not v:
-            continue
 
-        d[k] = v
+def meta_from(obj, fields):
+    """Build a meta dict from fields that have values."""
+    return {k: v
+            for k in fields.split(' ')
+            for v in (getattr(obj, k),)
+            if v}
 
-    return data.new_metadata('', '', d)
 
 # Accounts & Open
 
