@@ -14,7 +14,7 @@ def file_exists(filename):
     return filename
 
 
-def parse_arguments():
+def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument('input', type=file_exists)
 
@@ -28,4 +28,4 @@ def main(options):
         printer.print_entries(entries)
 
 
-main(parse_arguments())
+main(cli())
