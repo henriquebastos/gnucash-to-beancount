@@ -20,5 +20,7 @@ var/
 
 .ipynb_checkpoints
 
+.venv/
+
 .idea/
 .DS_Store
