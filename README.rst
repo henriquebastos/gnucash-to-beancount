@@ -34,6 +34,8 @@ Development
 The tests are still primitives using `diff` with *golden files*. If
 `test.sh` shows nothing, all is good. :)
 
+If `test.sh` shows errors where dates are off by one, try using `test-west.sh` instead.
+
 Known Limitations
 =================
 
