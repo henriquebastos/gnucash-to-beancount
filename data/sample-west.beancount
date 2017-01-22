@@ -4,6 +4,12 @@
 2016-10-31 open Assets:Account-Receivable                       USD
 2016-10-31 open Assets:Account-Stock                            APPL
 2016-10-31 open Assets:Account-Trading                          CORP
+2016-10-31 open Assets:Andrew                                   USD
+2016-10-31 open Assets:Andrew:Andrew-401k                       USD
+2016-10-31 open Assets:Andrew:Andrew-CD-at-2dot5pct             USD
+2016-10-31 open Assets:Andrew:Andrew-Cash                       USD
+2016-10-31 open Assets:Andrew:Andrew-Matures-10-19-2019         USD
+2016-10-31 open Assets:Andrew:Andrew-Saving-and-Loan            USD
 2016-10-31 open Assets:Current                                  USD
   description: "Current"
 2016-10-31 open Assets:Current:Brazilian-Money                  BRL

@@ -49,6 +49,14 @@ def account_name(account):
 
     name = account.fullname
     name = name.replace(' ', '-')  # Beancount does not allow whitespace.
+    name = name.replace("'s", '') # Joe's -> Joe
+    name = name.replace('(', '')
+    name = name.replace(')', '')  # 401(k) -> 401k
+    name = name.replace('@', 'at')
+    name = name.replace('%', 'pct')
+    name = name.replace('.', 'dot')
+    name = name.replace('&', 'and')
+    name = name.replace('/', '-')
 
     # If the Gnucash account is not under a valid Beancount account root
     # we must append it to the proper branch using the built account map.
