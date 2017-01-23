@@ -43,20 +43,22 @@ def _get_account_types_map(acc_types):
 ACCOUNT_TYPES_MAP = _get_account_types_map(ACCOUNT_TYPES)
 ACCOUNT_SEP = ':'
 
+def fix_account_name_part(part):
+    # Beancount account name parts cannot start with a digit
+    if part[0].isdigit(): return 'X-' + part
+    # Nor can they start with a '-'
+    if part[0] == '-': return 'X' + part
+    # Nor can they start with lower case
+    return part[0].upper() + part[1:]
 
 def account_name(account):
     """Returns a valid Beancount account name for a Gnucash account."""
 
     name = account.fullname
-    name = name.replace(' ', '-')  # Beancount does not allow whitespace.
-    name = name.replace("'s", '') # Joe's -> Joe
-    name = name.replace('(', '')
-    name = name.replace(')', '')  # 401(k) -> 401k
-    name = name.replace('@', 'at')
-    name = name.replace('%', 'pct')
-    name = name.replace('.', 'dot')
-    name = name.replace('&', 'and')
-    name = name.replace('/', '-')
+    name = sanitize_name(name)
+
+    # Beancount account names cannot start with lower case
+    name = ACCOUNT_SEP.join(list(map(lambda part: fix_account_name_part(part), name.split(ACCOUNT_SEP))))
 
     # If the Gnucash account is not under a valid Beancount account root
     # we must append it to the proper branch using the built account map.
@@ -70,26 +72,66 @@ def account_name(account):
 
     return name
 
+def sanitize_name(name):
+
+    name = name.replace(' ', '-')  # Beancount does not allow whitespace.
+
+    name = name.replace('@', 'at')
+    name = name.replace('%', 'pct')
+    name = name.replace('.', 'dot')
+    name = name.replace('&', 'and')
+    name = name.replace('+', 'plus')
+    name = name.replace('?', 'q')
+    name = name.replace('¢', 'cent')
+
+    name = name.replace("'", '')  # Joe's -> Joes
+    name = name.replace('(', '')
+    name = name.replace(')', '')  # 401(k) -> 401k
+    name = name.replace(',', '')  # A, B & C -> A-B-and-C
+    name = name.replace('*', '')  # Macy*s -> Macys
+
+    name = name.replace('/', '-')
+    name = name.replace('_', '-')
+
+    return name
+
+
 
 def Open(account, date):
     meta = meta_from(account, 'code description')
     name = account_name(account)
-    commodity = [account.commodity.mnemonic] if account.commodity else None
+    commodity = [commodity_name(account.commodity)] if account.commodity else None
 
     return data.Open(meta, date, name, commodity, None)
+
+def commodity_name(commodity):
+    """Returns a valid Beancount commodity name for a Gnucash commodity"""
+
+    name = sanitize_name(commodity.mnemonic)
+
+    # According to the documentation
+    # name can be up to 24 characters long, beginning with a capital letter and ending with a capital letter or a number.
+    # Leading initially to
+    #    name = name[0].upper() + name[1:24]
+    # But it seems that it must be all upper case
+    name = name.upper()[:24]
+    # TODO: "and ending with a capital letter or a number." we may have a - at the end
+
+    return name
 
 
 def Commodity(commodity, date):
     meta = meta_from(commodity, 'fullname')
+    name = commodity_name(commodity)
 
-    return data.Commodity(meta, date, commodity.mnemonic)
+    return data.Commodity(meta, date, name)
 
 
 def Price(price):
     meta = {}
     date = price.date.date()
-    currency = price.commodity.mnemonic
-    amount = data.Amount(price.value, price.currency.mnemonic)
+    currency = commodity_name(price.commodity)
+    amount = data.Amount(price.value, currency)
 
     return data.Price(meta, date, currency, amount)
 
@@ -103,7 +145,7 @@ def units_for(split):
     # least 1 decimal place.
 
     number = split.quantity * data.Decimal('1.0')
-    currency = split.account.commodity.mnemonic
+    currency = commodity_name(split.account.commodity)
 
     return data.Amount(number, currency)
 
@@ -116,7 +158,7 @@ def price_for(split):
         return None
 
     number = abs(split.value / split.quantity)
-    currency = txn_comm.mnemonic
+    currency = commodity_name(txn_comm)
 
     return data.Amount(number, currency)
 
