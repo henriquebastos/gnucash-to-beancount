@@ -24,3 +24,4 @@ var/
 
 .idea/
 .DS_Store
+/data/sample.gnucash.*.log
