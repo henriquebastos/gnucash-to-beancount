@@ -81,8 +81,8 @@
   Assets:Current:Checking  -100.0 USD
 
 2016-11-09 * "Bought BRL 100 @ USD 0.40"
-  Assets:Current:Brazilian-Money  100.0 BRL          
-  Assets:Current:Checking         -40.0 USD @ 2.5 BRL
+  Assets:Current:Brazilian-Money  100.0 BRL           
+  Assets:Current:Checking         -40.0 USD @ 2.50 BRL
 
 2016-11-07 * "Dinner with Friend"
   Expenses:Food             100.0 USD
@@ -107,5 +107,5 @@
   Liabilities:Credit-Card  -50.0 USD
 
 2017-01-22 * "Bought iBonds 10 at USD 12.34"
-  Assets:Andrew:IBond         10.0 IBOND-12-1-2013 @ 12.34 USD
-  Assets:Current:Checking  -123.40 USD                        
+  Assets:Andrew:IBond         10.0 IBOND-12-1-2013 @ 12.340 USD
+  Assets:Current:Checking  -123.40 USD                         
