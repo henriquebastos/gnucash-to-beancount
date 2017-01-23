@@ -177,6 +177,7 @@ def Posting(split):
 
 def Transaction(txn, postings=None):
     meta = meta_from(txn, 'num notes')
+    if 'notes' in meta: meta['notes'] = meta['notes'].replace('"', '\\"')
     date = txn.post_date.date()
     flag = '*'
     payee = ''
