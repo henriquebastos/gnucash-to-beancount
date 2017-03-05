@@ -39,7 +39,8 @@ def load_entries(book):
         entries.append(Commodity(commodity, first_date))
 
     for price in book.prices:
-        entries.append(Price(price))
+        if price.value > 0:
+            entries.append(Price(price))
 
     for txn in book.transactions:
         entries.append(TransactionWithPostings(txn))
