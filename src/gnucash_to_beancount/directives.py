@@ -153,10 +153,10 @@ def Commodity(commodity, date):
 def Price(price):
     meta = {}
     date = price.date.date()
-    currency = commodity_name(price.commodity)
+    currency = commodity_name(price.currency)
     amount = data.Amount(price.value, currency)
-
-    return data.Price(meta, date, currency, amount)
+    commodity = commodity_name(price.commodity)
+    return data.Price(meta, date, commodity, amount)
 
 
 # Postings
