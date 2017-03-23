@@ -163,11 +163,8 @@ def Price(price):
 
 
 def units_for(split):
-    # I was having balance precision problems due to how beancount deal
-    # with integer precision. So multiply quantity by 1.0 to force at
-    # least 1 decimal place.
 
-    number = split.quantity * data.Decimal('1.000000')
+    number = data.Decimal(split.quantity).quantize(data.Decimal(1.0) / data.Decimal(split.account.commodity.fraction))
     currency = commodity_name(split.account.commodity)
 
     return data.Amount(number, currency)
