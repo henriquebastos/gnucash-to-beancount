@@ -2,6 +2,8 @@
 """
 from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
+from unidecode import unidecode
+import re
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
 __license__ = "GNU GPLv2"
@@ -43,12 +45,15 @@ def _get_account_types_map(acc_types):
 ACCOUNT_TYPES_MAP = _get_account_types_map(ACCOUNT_TYPES)
 ACCOUNT_SEP = ':'
 
-
 def account_name(account):
     """Returns a valid Beancount account name for a Gnucash account."""
 
     name = account.fullname
-    name = name.replace(' ', '-')  # Beancount does not allow whitespace.
+    name = unidecode(name)
+    name = re.sub(r'[\s\.]', '-', name)
+    name = re.sub(r'[^A-Za-z0-9:-]', '', name)
+    if (name != ''):
+        name = name[0].upper() + name[1:]
 
     # If the Gnucash account is not under a valid Beancount account root
     # we must append it to the proper branch using the built account map.
