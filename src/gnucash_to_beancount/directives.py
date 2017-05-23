@@ -2,6 +2,7 @@
 """
 from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
+from decimal import DecimalException
 
 __author__ = "Henrique Bastos <henrique@bastos.net>"
 __license__ = "GNU GPLv2"
@@ -107,7 +108,10 @@ def price_for(split):
     if acc_comm == txn_comm:
         return None
 
-    number = abs(split.value / split.quantity)
+    try:
+        number = abs(split.value / split.quantity)
+    except DecimalException:  # handle empty transactions
+        return None
     currency = txn_comm.mnemonic
 
     return data.Amount(number, currency)
