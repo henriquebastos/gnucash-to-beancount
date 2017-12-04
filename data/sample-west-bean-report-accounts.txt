@@ -4,7 +4,6 @@ Assets:Account-Mutual-Fund                 2016-10-31
 Assets:Account-Receivable                  2016-10-31  
 Assets:Account-Stock                       2016-10-31  
 Assets:Account-Trading                     2016-10-31  
-Assets:Andrew                              2016-10-31  
 Assets:Andrew:Andrew-401k                  2016-10-31  
 Assets:Andrew:Andrew-CD-at-2dot5pct        2016-10-31  
 Assets:Andrew:Andrew-Matures-10-19-2019    2016-10-31  
