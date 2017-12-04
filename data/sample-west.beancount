@@ -57,9 +57,9 @@
 2016-10-31 commodity IBOND-12-1-2013
   fullname: "iBond 12-1-2013"
 
-2016-11-09 price BRL                                   0.4 BRL
-2016-10-31 price BRL                                  0.29 BRL
-2017-01-22 price IBOND-12-1-2013         12.34 IBOND-12-1-2013
+2016-11-09 price BRL                                   0.4 USD
+2016-10-31 price BRL                                  0.29 USD
+2017-01-22 price IBOND-12-1-2013                     12.34 USD
 
 2016-10-31 * "Everything I have so far"
   Assets:Current:Checking   100.000000 USD
