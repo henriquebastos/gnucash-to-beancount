@@ -1,0 +1,29 @@
+Assets:Account-Bank                       
+Assets:Account-Cash                       
+Assets:Account-Mutual-Fund                
+Assets:Account-Receivable                 
+Assets:Account-Stock                      
+Assets:Account-Trading                    
+Assets:Andrew:Andrew-401k                 
+Assets:Andrew:Andrew-CD-at-2dot5pct       
+Assets:Andrew:Andrew-Matures-10-19-2019   
+Assets:Andrew:Andrew-Saving-and-Loan      
+Assets:Andrew:Andrews                     
+Assets:Andrew:Andrews-Cash                
+Assets:Andrew:Andrews-Hidden              
+Assets:Andrew:IBond                           10.0000 IBOND-12-1-2013
+Assets:Andrew:X-401-With-Leading-Digit    
+Assets:Andrew:X-Andrew-With-Leading-Space 
+Assets:Current:Brazilian-Money               200.00   BRL
+Assets:Current:Checking                      507.60   USD
+Assets:Current:Wallet                        130.00   USD
+Assets:Receivables                        
+Equity:Opening-Balances                     -100.00   USD
+Expenses:Food                                200.00   USD
+Expenses:House                               100.00   USD
+Expenses:Insurance                            10.00   USD
+Expenses:Tax                                  90.00   USD
+Income:Salary                               -900.00   USD
+Liabilities:Account-Credit-Card           
+Liabilities:Account-Payable               
+Liabilities:Credit-Card                     -230.00   USD
