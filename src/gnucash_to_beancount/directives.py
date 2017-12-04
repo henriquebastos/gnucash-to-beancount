@@ -108,6 +108,10 @@ def Open(account, date):
     name = account_name(account)
     commodity = [commodity_name(account.commodity)] if account.commodity else None
 
+    dates = list(map(lambda split: split.transaction.post_date.date(), account.splits))
+    if len(dates) > 0:
+        date = min(dates)
+
     return data.Open(meta, date, name, commodity, None)
 
 def commodity_name(commodity):
