@@ -11,6 +11,7 @@
 2016-10-31 open Assets:Andrew:Andrew-Saving-and-Loan            USD
 2016-10-31 open Assets:Andrew:Andrews                           USD
 2016-10-31 open Assets:Andrew:Andrews-Cash                      USD
+2016-10-31 open Assets:Andrew:Andrews-Hidden                    USD
 2017-01-22 open Assets:Andrew:IBond                             IBOND-12-1-2013
 2016-10-31 open Assets:Andrew:X-401-With-Leading-Digit          USD
 2016-10-31 open Assets:Andrew:X-Andrew-With-Leading-Space       USD
@@ -35,6 +36,8 @@
 2016-10-31 open Liabilities:Account-Payable                     USD
 2016-11-03 open Liabilities:Credit-Card                         USD
   description: "Credit Card"
+
+2016-11-01 close Assets:Andrew:Andrews-Hidden
 
 2016-10-31 commodity USD
   fullname: "US Dollar"
