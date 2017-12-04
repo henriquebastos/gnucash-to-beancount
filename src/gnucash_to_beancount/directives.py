@@ -144,7 +144,7 @@ def units_for(split):
     # with integer precision. So multiply quantity by 1.0 to force at
     # least 1 decimal place.
 
-    number = split.quantity * data.Decimal('1.0')
+    number = split.quantity * data.Decimal('1.000000')
     currency = commodity_name(split.account.commodity)
 
     return data.Amount(number, currency)
@@ -157,8 +157,7 @@ def price_for(split):
     if acc_comm == txn_comm:
         return None
 
-    number = abs(split.value / split.quantity) * data.Decimal('1.0')
-    if number < 1.0E-12: number = data.Decimal('0.0')
+    number = abs(split.value / split.quantity) * data.Decimal('1.000000')
     currency = commodity_name(txn_comm)
 
     return data.Amount(number, currency)
@@ -177,6 +176,7 @@ def Posting(split):
 
 def Transaction(txn, postings=None):
     meta = meta_from(txn, 'num notes')
+    if 'notes' in meta: meta['notes'] = meta['notes'].replace('"', '\\"')
     date = txn.post_date.date()
     flag = '*'
     payee = ''
