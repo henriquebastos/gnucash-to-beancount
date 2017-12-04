@@ -93,6 +93,12 @@ def sanitize_name(name):
     name = name.replace('/', '-')
     name = name.replace('_', '-')
 
+    # The above may have created names with multiple dashes
+    while True:
+        n = name.replace('--', '-')
+        if n == name: break
+        name = n
+
     return name
 
 
@@ -112,10 +118,9 @@ def commodity_name(commodity):
     # According to the documentation
     # name can be up to 24 characters long, beginning with a capital letter and ending with a capital letter or a number.
     # Leading initially to
-    #    name = name[0].upper() + name[1:24]
+    #    name = (name[0].upper() + name[1:24]).strip('-')
     # But it seems that it must be all upper case
-    name = name.upper()[:24]
-    # TODO: "and ending with a capital letter or a number." we may have a - at the end
+    name = name.upper()[:24].strip('-')
 
     return name
 
