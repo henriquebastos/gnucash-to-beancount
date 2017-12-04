@@ -1,6 +1,6 @@
 Account                         Num Postings
 ------------------------------  ------------
-Assets:Current:Checking                    6
+Assets:Current:Checking                    7
 Assets:Current:Wallet                      4
 Expenses:Food                              3
 Assets:Current:Brazilian-Money             2
@@ -11,5 +11,6 @@ Expenses:Tax                               1
 Expenses:Insurance                         1
 Income:Salary                              1
 Expenses:House                             1
-~Total~                                   24
+Assets:Andrew:IBond                        1
+~Total~                                   26
 ------------------------------  ------------
