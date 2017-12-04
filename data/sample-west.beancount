@@ -11,6 +11,7 @@
 2016-10-31 open Assets:Andrew:Andrews                           USD
 2016-10-31 open Assets:Andrew:Andrews-Cash                      USD
 2016-10-31 open Assets:Andrew:Andrews-Hidden                    USD
+2017-12-03 open Assets:Andrew:Bad-Transaction                   APPL
 2017-01-22 open Assets:Andrew:IBond                             IBOND-12-1-2013
 2016-10-31 open Assets:Andrew:X-401-With-Leading-Digit          USD
 2016-10-31 open Assets:Andrew:X-Andrew-With-Leading-Space       USD
@@ -111,3 +112,6 @@
 2017-01-22 * "Bought iBonds 10 at USD 12.34"
   Assets:Andrew:IBond      10.0000 IBOND-12-1-2013 @ 12.34000000 USD
   Assets:Current:Checking  -123.40 USD                              
+
+2017-12-03 * "Bad Transaction"
+  Assets:Andrew:Bad-Transaction  0.0000 APPL

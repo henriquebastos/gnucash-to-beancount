@@ -12,5 +12,6 @@ Expenses:Insurance                         1
 Income:Salary                              1
 Expenses:House                             1
 Assets:Andrew:IBond                        1
-~Total~                                   26
+Assets:Andrew:Bad-Transaction              1
+~Total~                                   27
 ------------------------------  ------------
