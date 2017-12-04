@@ -153,21 +153,18 @@ def Commodity(commodity, date):
 def Price(price):
     meta = {}
     date = price.date.date()
-    currency = commodity_name(price.commodity)
+    currency = commodity_name(price.currency)
     amount = data.Amount(price.value, currency)
-
-    return data.Price(meta, date, currency, amount)
+    commodity = commodity_name(price.commodity)
+    return data.Price(meta, date, commodity, amount)
 
 
 # Postings
 
 
 def units_for(split):
-    # I was having balance precision problems due to how beancount deal
-    # with integer precision. So multiply quantity by 1.0 to force at
-    # least 1 decimal place.
 
-    number = split.quantity * data.Decimal('1.000000')
+    number = data.Decimal(split.quantity).quantize(data.Decimal(1.0) / data.Decimal(split.account.commodity.fraction))
     currency = commodity_name(split.account.commodity)
 
     return data.Amount(number, currency)
