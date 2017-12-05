@@ -57,58 +57,58 @@
 2016-11-01 commodity IBOND-12-1-2013
   fullname: "iBond 12-1-2013"
 
-2016-11-10 price BRL                                   0.4 BRL
-2016-11-01 price BRL                                  0.29 BRL
-2017-01-22 price IBOND-12-1-2013         12.34 IBOND-12-1-2013
+2016-11-10 price BRL                                   0.4 USD
+2016-11-01 price BRL                                  0.29 USD
+2017-01-22 price IBOND-12-1-2013                     12.34 USD
 
 2016-11-01 * "Everything I have so far"
-  Assets:Current:Checking   100.000000 USD
-  Equity:Opening-Balances  -100.000000 USD
+  Assets:Current:Checking   100.00 USD
+  Equity:Opening-Balances  -100.00 USD
 
 2016-11-01 * "Bought BRL 100 @ USD 0.29"
-  Assets:Current:Brazilian-Money  100.000000 BRL                                    
-  Assets:Current:Checking         -29.000000 USD @ 3.448275862068965517241379310 BRL
+  Assets:Current:Brazilian-Money  100.00 BRL                                    
+  Assets:Current:Checking         -29.00 USD @ 3.448275862068965517241379310 BRL
 
 2016-11-02 * "Withdraw"
-  Assets:Current:Wallet     100.000000 USD
-  Assets:Current:Checking  -100.000000 USD
+  Assets:Current:Wallet     100.00 USD
+  Assets:Current:Checking  -100.00 USD
 
 2016-11-05 * "Salary"
-  Expenses:Tax               90.000000 USD
-  Expenses:Insurance         10.000000 USD
-  Assets:Current:Checking   800.000000 USD
-  Income:Salary            -900.000000 USD
+  Expenses:Tax               90.00 USD
+  Expenses:Insurance         10.00 USD
+  Assets:Current:Checking   800.00 USD
+  Income:Salary            -900.00 USD
 
 2016-11-10 * "Rent"
-  Expenses:House            100.000000 USD
-  Assets:Current:Checking  -100.000000 USD
+  Expenses:House            100.00 USD
+  Assets:Current:Checking  -100.00 USD
 
 2016-11-10 * "Bought BRL 100 @ USD 0.40"
-  Assets:Current:Brazilian-Money  100.000000 BRL                
-  Assets:Current:Checking         -40.000000 USD @ 2.5000000 BRL
+  Assets:Current:Brazilian-Money  100.00 BRL                
+  Assets:Current:Checking         -40.00 USD @ 2.5000000 BRL
 
 2016-11-08 * "Dinner with Friend"
-  Expenses:Food             100.000000 USD
+  Expenses:Food             100.00 USD
     memo: "My cut"
-  Assets:Receivables        100.000000 USD
+  Assets:Receivables        100.00 USD
     memo: "Friend will pay me on 12th"
-  Liabilities:Credit-Card  -180.000000 USD
+  Liabilities:Credit-Card  -180.00 USD
     memo: "Paying for everyone"
-  Assets:Current:Wallet     -20.000000 USD
+  Assets:Current:Wallet     -20.00 USD
     memo: "Tip in Cash"
 
 2016-11-11 * "Lunch"
-  Expenses:Food           50.000000 USD
-  Assets:Current:Wallet  -50.000000 USD
+  Expenses:Food           50.00 USD
+  Assets:Current:Wallet  -50.00 USD
 
 2016-11-12 * "Friend paid me for Dinner"
-  Assets:Current:Wallet   100.000000 USD
-  Assets:Receivables     -100.000000 USD
+  Assets:Current:Wallet   100.00 USD
+  Assets:Receivables     -100.00 USD
 
 2016-11-04 * "Dinner"
-  Expenses:Food             50.000000 USD
-  Liabilities:Credit-Card  -50.000000 USD
+  Expenses:Food             50.00 USD
+  Liabilities:Credit-Card  -50.00 USD
 
 2017-01-22 * "Bought iBonds 10 at USD 12.34"
-  Assets:Andrew:IBond         10.000000 IBOND-12-1-2013 @ 12.34000000 USD
-  Assets:Current:Checking  -123.4000000 USD                              
+  Assets:Andrew:IBond      10.0000 IBOND-12-1-2013 @ 12.34000000 USD
+  Assets:Current:Checking  -123.40 USD                              
