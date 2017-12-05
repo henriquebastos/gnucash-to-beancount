@@ -19,7 +19,7 @@ def load_entries(book):
     entries = []
 
     for account in book.accounts:
-        if account.fullname in ACCOUNT_TYPES:
+        if account.fullname in ACCOUNT_TYPES or account.placeholder:
             continue
 
         entries.append(Open(account, first_date))
@@ -28,7 +28,7 @@ def load_entries(book):
 
     close_entries = []
     for account in book.accounts:
-        if account.fullname in ACCOUNT_TYPES or not account.hidden:
+        if account.fullname in ACCOUNT_TYPES or account.placeholder or not account.hidden:
             continue
         close_entries.append(Close(account, first_date))
 

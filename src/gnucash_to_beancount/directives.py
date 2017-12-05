@@ -2,6 +2,7 @@
 """
 from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
+from decimal import InvalidOperation
 
 import datetime
 
@@ -177,7 +178,10 @@ def price_for(split):
     if acc_comm == txn_comm:
         return None
 
-    number = abs(split.value / split.quantity) * data.Decimal('1.000000')
+    try:
+        number = abs(split.value / split.quantity) * data.Decimal('1.000000')
+    except InvalidOperation: # Skip "bad" transcations (split.value and quantity are 0)
+        return None
     currency = commodity_name(txn_comm)
 
     return data.Amount(number, currency)
