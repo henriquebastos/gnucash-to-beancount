@@ -1,19 +1,24 @@
-Assets:Account-Bank             
-Assets:Account-Cash             
-Assets:Account-Mutual-Fund      
-Assets:Account-Receivable       
-Assets:Account-Stock            
-Assets:Account-Trading          
-Assets:Current:Brazilian-Money     200.0 BRL
-Assets:Current:Checking            631.0 USD
-Assets:Current:Wallet              130.0 USD
-Assets:Receivables              
-Equity:Opening-Balances           -100.0 USD
-Expenses:Food                      200.0 USD
-Expenses:House                     100.0 USD
-Expenses:Insurance                  10.0 USD
-Expenses:Tax                        90.0 USD
-Income:Salary                     -900.0 USD
-Liabilities:Account-Credit-Card 
-Liabilities:Account-Payable     
-Liabilities:Credit-Card           -230.0 USD
+Assets:Account-Bank                     
+Assets:Account-Cash                     
+Assets:Account-Mutual-Fund              
+Assets:Account-Receivable               
+Assets:Account-Stock                    
+Assets:Account-Trading                  
+Assets:Andrew:Andrew-401k               
+Assets:Andrew:Andrew-CD-at-2dot5pct     
+Assets:Andrew:Andrew-Cash               
+Assets:Andrew:Andrew-Matures-10-19-2019 
+Assets:Andrew:Andrew-Saving-and-Loan    
+Assets:Current:Brazilian-Money             200.0 BRL
+Assets:Current:Checking                    631.0 USD
+Assets:Current:Wallet                      130.0 USD
+Assets:Receivables                      
+Equity:Opening-Balances                   -100.0 USD
+Expenses:Food                              200.0 USD
+Expenses:House                             100.0 USD
+Expenses:Insurance                          10.0 USD
+Expenses:Tax                                90.0 USD
+Income:Salary                             -900.0 USD
+Liabilities:Account-Credit-Card         
+Liabilities:Account-Payable             
+Liabilities:Credit-Card                   -230.0 USD
