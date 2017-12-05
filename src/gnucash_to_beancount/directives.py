@@ -3,6 +3,8 @@
 from beancount.core import data
 from beancount.core.account_types import DEFAULT_ACCOUNT_TYPES as ACCOUNT_TYPES
 
+import datetime
+
 __author__ = "Henrique Bastos <henrique@bastos.net>"
 __license__ = "GNU GPLv2"
 
@@ -15,7 +17,7 @@ def meta_from(obj, fields):
             if v}
 
 
-# Accounts & Open
+# Accounts, Open & Close
 
 
 def _get_account_types_map(acc_types):
@@ -102,17 +104,29 @@ def sanitize_name(name):
     return name
 
 
-
 def Open(account, date):
     meta = meta_from(account, 'code description')
     name = account_name(account)
     commodity = [commodity_name(account.commodity)] if account.commodity else None
-
     dates = list(map(lambda split: split.transaction.post_date.date(), account.splits))
     if len(dates) > 0:
         date = min(dates)
 
     return data.Open(meta, date, name, commodity, None)
+
+
+def Close(account, date):
+    meta = meta_from(account, 'code')
+    name = account_name(account)
+    dates = list(map(lambda split: split.transaction.post_date.date(), account.splits))
+    if len(dates) > 0:
+        date = max(dates)
+
+    # Ensure that we close *after* the open.
+    date += datetime.timedelta(days=1)
+
+    return data.Close(meta, date, name)
+
 
 def commodity_name(commodity):
     """Returns a valid Beancount commodity name for a Gnucash commodity"""
