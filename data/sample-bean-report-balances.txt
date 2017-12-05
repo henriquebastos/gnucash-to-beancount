@@ -11,6 +11,7 @@ Assets:Andrew:Andrew-Saving-and-Loan
 Assets:Andrew:Andrews                     
 Assets:Andrew:Andrews-Cash                
 Assets:Andrew:Andrews-Hidden              
+Assets:Andrew:Bad-Transaction             
 Assets:Andrew:IBond                           10.0000 IBOND-12-1-2013
 Assets:Andrew:X-401-With-Leading-Digit    
 Assets:Andrew:X-Andrew-With-Leading-Space 

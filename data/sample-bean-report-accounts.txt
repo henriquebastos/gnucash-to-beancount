@@ -4,7 +4,6 @@ Assets:Account-Mutual-Fund                 2016-11-01
 Assets:Account-Receivable                  2016-11-01  
 Assets:Account-Stock                       2016-11-01  
 Assets:Account-Trading                     2016-11-01  
-Assets:Andrew                              2016-11-01  
 Assets:Andrew:Andrew-401k                  2016-11-01  
 Assets:Andrew:Andrew-CD-at-2dot5pct        2016-11-01  
 Assets:Andrew:Andrew-Matures-10-19-2019    2016-11-01  
@@ -12,6 +11,7 @@ Assets:Andrew:Andrew-Saving-and-Loan       2016-11-01
 Assets:Andrew:Andrews                      2016-11-01  
 Assets:Andrew:Andrews-Cash                 2016-11-01  
 Assets:Andrew:Andrews-Hidden               2016-11-01  2016-11-02
+Assets:Andrew:Bad-Transaction              2017-12-03  
 Assets:Andrew:IBond                        2017-01-22  
 Assets:Andrew:X-401-With-Leading-Digit     2016-11-01  
 Assets:Andrew:X-Andrew-With-Leading-Space  2016-11-01  
