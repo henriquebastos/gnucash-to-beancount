@@ -11,7 +11,7 @@
 2016-11-01 open Assets:Andrew:Andrew-Saving-and-Loan            USD
 2016-11-01 open Assets:Andrew:Andrews                           USD
 2016-11-01 open Assets:Andrew:Andrews-Cash                      USD
-2016-11-01 open Assets:Andrew:IBond                             IBOND-12-1-2013
+2017-01-22 open Assets:Andrew:IBond                             IBOND-12-1-2013
 2016-11-01 open Assets:Andrew:X-401-With-Leading-Digit          USD
 2016-11-01 open Assets:Andrew:X-Andrew-With-Leading-Space       USD
 2016-11-01 open Assets:Current                                  USD
@@ -19,21 +19,21 @@
 2016-11-01 open Assets:Current:Brazilian-Money                  BRL
 2016-11-01 open Assets:Current:Checking                         USD
   description: "Checking"
-2016-11-01 open Assets:Current:Wallet                           USD
+2016-11-02 open Assets:Current:Wallet                           USD
   description: "Wallet"
-2016-11-01 open Assets:Receivables                              USD
+2016-11-08 open Assets:Receivables                              USD
   description: "Receivables"
 2016-11-01 open Equity:Opening-Balances                         USD
   description: "Opening Balances"
-2016-11-01 open Expenses:Food                                   USD
-2016-11-01 open Expenses:House                                  USD
-2016-11-01 open Expenses:Insurance                              USD
-2016-11-01 open Expenses:Tax                                    USD
-2016-11-01 open Income:Salary                                   USD
+2016-11-04 open Expenses:Food                                   USD
+2016-11-10 open Expenses:House                                  USD
+2016-11-05 open Expenses:Insurance                              USD
+2016-11-05 open Expenses:Tax                                    USD
+2016-11-05 open Income:Salary                                   USD
   description: "Salary"
 2016-11-01 open Liabilities:Account-Credit-Card                 USD
 2016-11-01 open Liabilities:Account-Payable                     USD
-2016-11-01 open Liabilities:Credit-Card                         USD
+2016-11-04 open Liabilities:Credit-Card                         USD
   description: "Credit Card"
 
 2016-11-01 commodity USD
