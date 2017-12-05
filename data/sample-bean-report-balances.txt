@@ -10,19 +10,19 @@ Assets:Andrew:Andrew-Matures-10-19-2019
 Assets:Andrew:Andrew-Saving-and-Loan      
 Assets:Andrew:Andrews                     
 Assets:Andrew:Andrews-Cash                
-Assets:Andrew:IBond                           10.00 IBOND-12-1-2013
+Assets:Andrew:IBond                           10.000000 IBOND-12-1-2013
 Assets:Andrew:X-401-With-Leading-Digit    
 Assets:Andrew:X-Andrew-With-Leading-Space 
-Assets:Current:Brazilian-Money               200.0  BRL
-Assets:Current:Checking                      507.6  USD
-Assets:Current:Wallet                        130.0  USD
+Assets:Current:Brazilian-Money               200.000000 BRL
+Assets:Current:Checking                      507.600000 USD
+Assets:Current:Wallet                        130.000000 USD
 Assets:Receivables                        
-Equity:Opening-Balances                     -100.0  USD
-Expenses:Food                                200.0  USD
-Expenses:House                               100.0  USD
-Expenses:Insurance                            10.0  USD
-Expenses:Tax                                  90.0  USD
-Income:Salary                               -900.0  USD
+Equity:Opening-Balances                     -100.000000 USD
+Expenses:Food                                200.000000 USD
+Expenses:House                               100.000000 USD
+Expenses:Insurance                            10.000000 USD
+Expenses:Tax                                  90.000000 USD
+Income:Salary                               -900.000000 USD
 Liabilities:Account-Credit-Card           
 Liabilities:Account-Payable               
-Liabilities:Credit-Card                     -230.0  USD
+Liabilities:Credit-Card                     -230.000000 USD
