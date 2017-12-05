@@ -93,6 +93,12 @@ def sanitize_name(name):
     name = name.replace('/', '-')
     name = name.replace('_', '-')
 
+    # The above may have created names with multiple dashes
+    while True:
+        n = name.replace('--', '-')
+        if n == name: break
+        name = n
+
     return name
 
 
@@ -112,10 +118,9 @@ def commodity_name(commodity):
     # According to the documentation
     # name can be up to 24 characters long, beginning with a capital letter and ending with a capital letter or a number.
     # Leading initially to
-    #    name = name[0].upper() + name[1:24]
+    #    name = (name[0].upper() + name[1:24]).strip('-')
     # But it seems that it must be all upper case
-    name = name.upper()[:24]
-    # TODO: "and ending with a capital letter or a number." we may have a - at the end
+    name = name.upper()[:24].strip('-')
 
     return name
 
@@ -144,7 +149,7 @@ def units_for(split):
     # with integer precision. So multiply quantity by 1.0 to force at
     # least 1 decimal place.
 
-    number = split.quantity * data.Decimal('1.0')
+    number = split.quantity * data.Decimal('1.000000')
     currency = commodity_name(split.account.commodity)
 
     return data.Amount(number, currency)
@@ -157,7 +162,7 @@ def price_for(split):
     if acc_comm == txn_comm:
         return None
 
-    number = abs(split.value / split.quantity)
+    number = abs(split.value / split.quantity) * data.Decimal('1.000000')
     currency = commodity_name(txn_comm)
 
     return data.Amount(number, currency)
@@ -176,6 +181,7 @@ def Posting(split):
 
 def Transaction(txn, postings=None):
     meta = meta_from(txn, 'num notes')
+    if 'notes' in meta: meta['notes'] = meta['notes'].replace('"', '\\"')
     date = txn.post_date.date()
     flag = '*'
     payee = ''
