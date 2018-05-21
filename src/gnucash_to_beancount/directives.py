@@ -79,7 +79,7 @@ def Commodity(commodity, date):
 
 def Price(price):
     meta = {}
-    date = price.date.date()
+    date = price.date
     currency = price.commodity.mnemonic
     amount = data.Amount(price.value, price.currency.mnemonic)
 
@@ -126,7 +126,7 @@ def Posting(split):
 
 def Transaction(txn, postings=None):
     meta = meta_from(txn, 'num notes')
-    date = txn.post_date.date()
+    date = txn.post_date
     flag = '*'
     payee = ''
     narration = txn.description
