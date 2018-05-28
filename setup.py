@@ -17,7 +17,7 @@ if __name__ == "__main__":
           keywords=['beancount', 'gnucash', 'convert', 'converter', 'ledger', 'accounting'],
           install_requires=[
               'beancount',
-              'piecash',
+              'piecash>=0.15.0',
           ],
           packages=find_packages(where='src'),
           package_dir={"": "src"},
