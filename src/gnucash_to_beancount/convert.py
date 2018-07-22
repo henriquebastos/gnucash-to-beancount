@@ -14,7 +14,7 @@ __license__ = "GNU GPLv2"
 
 
 def load_entries(book):
-    first_date = book.transactions[0].post_date.date()
+    first_date = book.transactions[0].post_date
 
     entries = []
 

@@ -109,7 +109,7 @@ def Open(account, date):
     meta = meta_from(account, 'code description')
     name = account_name(account)
     commodity = [commodity_name(account.commodity)] if account.commodity else None
-    dates = list(map(lambda split: split.transaction.post_date.date(), account.splits))
+    dates = list(map(lambda split: split.transaction.post_date, account.splits))
     if len(dates) > 0:
         date = min(dates)
 
@@ -119,7 +119,7 @@ def Open(account, date):
 def Close(account, date):
     meta = meta_from(account, 'code')
     name = account_name(account)
-    dates = list(map(lambda split: split.transaction.post_date.date(), account.splits))
+    dates = list(map(lambda split: split.transaction.post_date, account.splits))
     if len(dates) > 0:
         date = max(dates)
 
@@ -153,7 +153,7 @@ def Commodity(commodity, date):
 
 def Price(price):
     meta = {}
-    date = price.date.date()
+    date = price.date
     currency = commodity_name(price.currency)
     amount = data.Amount(price.value, currency)
     commodity = commodity_name(price.commodity)
@@ -201,7 +201,7 @@ def Posting(split):
 def Transaction(txn, postings=None):
     meta = meta_from(txn, 'num notes')
     if 'notes' in meta: meta['notes'] = meta['notes'].replace('"', '\\"')
-    date = txn.post_date.date()
+    date = txn.post_date
     flag = '*'
     payee = ''
     narration = txn.description
