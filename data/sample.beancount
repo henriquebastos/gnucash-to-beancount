@@ -4,27 +4,40 @@
 2016-11-01 open Assets:Account-Receivable                       USD
 2016-11-01 open Assets:Account-Stock                            APPL
 2016-11-01 open Assets:Account-Trading                          CORP
+2016-11-01 open Assets:Andrew:Andrew-401k                       USD
+2016-11-01 open Assets:Andrew:Andrew-CD-at-2dot5pct             USD
+2016-11-01 open Assets:Andrew:Andrew-Matures-10-19-2019         USD
+2016-11-01 open Assets:Andrew:Andrew-Saving-and-Loan            USD
+2016-11-01 open Assets:Andrew:Andrews                           USD
+2016-11-01 open Assets:Andrew:Andrews-Cash                      USD
+2016-11-01 open Assets:Andrew:Andrews-Hidden                    USD
+2017-12-03 open Assets:Andrew:Bad-Transaction                   APPL
+2017-01-22 open Assets:Andrew:IBond                             IBOND-12-1-2013
+2016-11-01 open Assets:Andrew:X-401-With-Leading-Digit          USD
+2016-11-01 open Assets:Andrew:X-Andrew-With-Leading-Space       USD
 2016-11-01 open Assets:Current                                  USD
   description: "Current"
 2016-11-01 open Assets:Current:Brazilian-Money                  BRL
 2016-11-01 open Assets:Current:Checking                         USD
   description: "Checking"
-2016-11-01 open Assets:Current:Wallet                           USD
+2016-11-02 open Assets:Current:Wallet                           USD
   description: "Wallet"
-2016-11-01 open Assets:Receivables                              USD
+2016-11-08 open Assets:Receivables                              USD
   description: "Receivables"
 2016-11-01 open Equity:Opening-Balances                         USD
   description: "Opening Balances"
-2016-11-01 open Expenses:Food                                   USD
-2016-11-01 open Expenses:House                                  USD
-2016-11-01 open Expenses:Insurance                              USD
-2016-11-01 open Expenses:Tax                                    USD
-2016-11-01 open Income:Salary                                   USD
+2016-11-04 open Expenses:Food                                   USD
+2016-11-10 open Expenses:House                                  USD
+2016-11-05 open Expenses:Insurance                              USD
+2016-11-05 open Expenses:Tax                                    USD
+2016-11-05 open Income:Salary                                   USD
   description: "Salary"
 2016-11-01 open Liabilities:Account-Credit-Card                 USD
 2016-11-01 open Liabilities:Account-Payable                     USD
-2016-11-01 open Liabilities:Credit-Card                         USD
+2016-11-04 open Liabilities:Credit-Card                         USD
   description: "Credit Card"
+
+2016-11-02 close Assets:Andrew:Andrews-Hidden
 
 2016-11-01 commodity USD
   fullname: "US Dollar"
@@ -41,53 +54,64 @@
 2016-11-01 commodity CORP
   fullname: "Corporation"
 
+2016-11-01 commodity IBOND-12-1-2013
+  fullname: "iBond 12-1-2013"
+
 2016-11-10 price BRL                                   0.4 USD
 2016-11-01 price BRL                                  0.29 USD
+2017-01-22 price IBOND-12-1-2013                     12.34 USD
 
 2016-11-01 * "Everything I have so far"
-  Assets:Current:Checking   100.0 USD
-  Equity:Opening-Balances  -100.0 USD
+  Assets:Current:Checking   100.00 USD
+  Equity:Opening-Balances  -100.00 USD
 
 2016-11-01 * "Bought BRL 100 @ USD 0.29"
-  Assets:Current:Brazilian-Money  100.0 BRL                                    
-  Assets:Current:Checking         -29.0 USD @ 3.448275862068965517241379310 BRL
+  Assets:Current:Brazilian-Money  100.00 BRL                                    
+  Assets:Current:Checking         -29.00 USD @ 3.448275862068965517241379310 BRL
 
 2016-11-02 * "Withdraw"
-  Assets:Current:Wallet     100.0 USD
-  Assets:Current:Checking  -100.0 USD
+  Assets:Current:Wallet     100.00 USD
+  Assets:Current:Checking  -100.00 USD
 
 2016-11-05 * "Salary"
-  Expenses:Tax               90.0 USD
-  Expenses:Insurance         10.0 USD
-  Assets:Current:Checking   800.0 USD
-  Income:Salary            -900.0 USD
+  Expenses:Tax               90.00 USD
+  Expenses:Insurance         10.00 USD
+  Assets:Current:Checking   800.00 USD
+  Income:Salary            -900.00 USD
 
 2016-11-10 * "Rent"
-  Expenses:House            100.0 USD
-  Assets:Current:Checking  -100.0 USD
+  Expenses:House            100.00 USD
+  Assets:Current:Checking  -100.00 USD
 
 2016-11-10 * "Bought BRL 100 @ USD 0.40"
-  Assets:Current:Brazilian-Money  100.0 BRL          
-  Assets:Current:Checking         -40.0 USD @ 2.5 BRL
+  Assets:Current:Brazilian-Money  100.00 BRL                
+  Assets:Current:Checking         -40.00 USD @ 2.5000000 BRL
 
 2016-11-08 * "Dinner with Friend"
-  Expenses:Food             100.0 USD
+  Expenses:Food             100.00 USD
     memo: "My cut"
-  Assets:Receivables        100.0 USD
+  Assets:Receivables        100.00 USD
     memo: "Friend will pay me on 12th"
-  Liabilities:Credit-Card  -180.0 USD
+  Liabilities:Credit-Card  -180.00 USD
     memo: "Paying for everyone"
-  Assets:Current:Wallet     -20.0 USD
+  Assets:Current:Wallet     -20.00 USD
     memo: "Tip in Cash"
 
 2016-11-11 * "Lunch"
-  Expenses:Food           50.0 USD
-  Assets:Current:Wallet  -50.0 USD
+  Expenses:Food           50.00 USD
+  Assets:Current:Wallet  -50.00 USD
 
 2016-11-12 * "Friend paid me for Dinner"
-  Assets:Current:Wallet   100.0 USD
-  Assets:Receivables     -100.0 USD
+  Assets:Current:Wallet   100.00 USD
+  Assets:Receivables     -100.00 USD
 
 2016-11-04 * "Dinner"
-  Expenses:Food             50.0 USD
-  Liabilities:Credit-Card  -50.0 USD
+  Expenses:Food             50.00 USD
+  Liabilities:Credit-Card  -50.00 USD
+
+2017-01-22 * "Bought iBonds 10 at USD 12.34"
+  Assets:Andrew:IBond      10.0000 IBOND-12-1-2013 @ 12.34000000 USD
+  Assets:Current:Checking  -123.40 USD                              
+
+2017-12-03 * "Bad Transaction"
+  Assets:Andrew:Bad-Transaction  0.0000 APPL

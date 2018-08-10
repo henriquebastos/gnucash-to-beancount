@@ -20,5 +20,10 @@ var/
 
 .ipynb_checkpoints
 
+.venv/
+
 .idea/
 .DS_Store
+
+# Ignore Gnucash log files.
+/data/sample.gnucash.*.log
