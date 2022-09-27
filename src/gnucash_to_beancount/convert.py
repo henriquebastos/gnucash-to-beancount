@@ -15,23 +15,19 @@ __license__ = "GNU GPLv2"
 def load_entries(book):
     first_date = book.transactions[0].post_date.date()
 
-    entries = []
+    entries = [
+        Open(account, first_date)
+        for account in book.accounts
+        if account.fullname not in ACCOUNT_TYPES
+    ]
 
-    for account in book.accounts:
-        if account.fullname in ACCOUNT_TYPES:
-            continue
-
-        entries.append(Open(account, first_date))
 
     entries.sort(key=attrgetter('account'))
 
-    for commodity in book.commodities:
-        entries.append(Commodity(commodity, first_date))
+    entries.extend(
+        Commodity(commodity, first_date) for commodity in book.commodities
+    )
 
-    for price in book.prices:
-        entries.append(Price(price))
-
-    for txn in book.transactions:
-        entries.append(TransactionWithPostings(txn))
-
+    entries.extend(Price(price) for price in book.prices)
+    entries.extend(TransactionWithPostings(txn) for txn in book.transactions)
     return entries

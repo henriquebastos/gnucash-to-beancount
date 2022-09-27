@@ -15,7 +15,7 @@ __license__ = "GNU GPLv2"
 def file_exists(filename):
     """Make sure input filename exists."""
     if not Path(filename).exists():
-        raise argparse.ArgumentTypeError('File not found: ' + filename)
+        raise argparse.ArgumentTypeError(f'File not found: {filename}')
 
     return filename
 
